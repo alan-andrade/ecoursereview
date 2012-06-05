@@ -12,6 +12,8 @@
 class Relationship < ActiveRecord::Base
   attr_accessible :course_id, :professor_id
   
-  belongs_to :course_id
-  belongs_to :professor_id
+  belongs_to :courses
+  belongs_to :professors
+  validates_uniqueness_of :course_id, :scope => :professor_id
+  validates_uniqueness_of :professor_id, :scope => :course_id
 end

@@ -1,41 +1,67 @@
 #Udacity Crawler
-#Professor - :course_id, :name, :image_url, :bio
+#Professor - :name, :image_url, :bio
 #Course - :provider, :subject, :title, :url, :average_rating, :youtube_url, :description, :level, :image_url, :course_code
 
 require 'typhoeus'
 require 'json'
 require 'cgi'
 
-class Crawlers
+class UdacityCrawler < ActiveRecord::Base
     
-    #catch JSON parse error
+    PROVIDER = 'Udacity'
     
-    provider = 'Udacity'
-    base_url = "http://www.udacity.com"
-    url = 'http://www.udacity.com/ajax?{"data":{},"method":"course.get_available"}'
-    udacity_url = URI.encode(url)
-    response = Typhoeus::Request.get(udacity_url)
-    all_courses = JSON.parse(response.body)
-    courses = all_courses['payload']['courses']
-    courses.each do |course|
-       title = course['title'] 
-       name = course['name']
-       course_id = course['course_id']
-       full_title = "#{name}: #{title} (#{course_id})"
-       instructors = course['instructors']
-       instructors.each do |instructor|
-          instructor['name'] 
-          photo_url = instructor['headshot_url']
-          full_photo_url = "#{base_url}#{photo_url}"
-          bio = CGI.escape(instructor['bio'])
-       end
-       path = course['path']
-       course_url = "http://www.udacity.com/overview/#{path}"
-       youtube_id = course['teaser']['youtube_id']
-       youtube_url = "http://www.youtube.com/watch?v=#{youtube_id}"
-       subject = course['tags']['baseSubject']
-       description = CGI.escape(course['description'])
-       level = course['tags']['difficulty']
-       image_url = course['icon_url']
+    def self.get_course_info(courses)
+        courses.each do |course|
+            
+            #add course
+            params = {:provider => PROVIDER}
+            title = course['title'] 
+            name = course['name']
+            params[:title] = "#{name}: #{title}"
+            params[:cours_code] = course['course_id']
+            url_path = course['path']
+            params[:url] = "http://www.udacity.com/overview/#{url_path}"
+            youtube_id = course['teaser']['youtube_id']
+            params[:youtube_url] = "http://www.youtube.com/watch?v=#{youtube_id}"
+            params[:subject] = course['tags']['baseSubject']
+            params[:description] = CGI.escape(course['description'])
+            params[:level] = course['tags']['difficulty']
+            params[:image_url] = course['icon_url']
+            course = Course.new(params)
+            p course
+            
+            #add professor
+            instructors = course['instructors']
+            instructors.each do |instructor|
+                params = {}
+                params[:name] = instructor['name'] 
+                photo_url = instructor['headshot_url']
+                params[:image_url] = "http://www.udacity.com#{photo_url}"
+                params[:bio] = CGI.escape(instructor['bio'])
+                #p params
+                
+                #add relationship
+            end
+        end
     end
+    
+    def self.parse_udacity(url)
+        response = Typhoeus::Request.get(url)
+        all_courses = JSON.parse(response.body)
+        courses = all_courses['payload']['courses']
+        UdacityCrawler.get_course_info(courses)
+    end
+    
+    def self.get_udacity_courses
+        url = 'http://www.udacity.com/ajax?{"data":{},"method":"course.get_available"}'
+        udacity_url = URI.encode(url)
+        begin
+            UdacityCrawler.parse_udacity(udacity_url)
+        rescue Exception => e
+           puts e
+           UdacityCrawler.parse_udacity(udacity_url)     
+        end 
+    end
+    
+    UdacityCrawler.get_udacity_courses
 end
