@@ -6,7 +6,7 @@
     <th>Title</th>
     <th>Url</th>
     <th>Subject</th>
-    <th></th>
+    <th>Average Rating</th>
     <th></th>
     <th></th>
   </tr>
@@ -17,6 +17,7 @@
     <td><%= course.title %></td>
     <td><%= course.url %></td>
     <td><%= course.subject %></td>
+	<td><%= course.average_rating %></td>
     <td><%= link_to 'Show', course %></td>
     <td><%= link_to 'Edit', edit_course_path(course) %></td>
     <td><%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %></td>
