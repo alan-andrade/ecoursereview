@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<div class="row-fluid">
+	<%=render 'courses/sidebar'%>
+	<div class="span8">
+
 <p>
   <b>Provider:</b>
   <%= @course.provider %>
@@ -26,3 +30,5 @@
 </p>
 
 <%= link_to 'Back', courses_path %>
+</div>
+</div>

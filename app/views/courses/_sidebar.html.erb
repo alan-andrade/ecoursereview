@@ -1,0 +1,22 @@
+<div class="span3 sidebar">
+	<div class='sidebar-module'>
+		<div class='section header'>
+			<div class='name'>
+				<b>Reviews By Subject</b>
+			</div>
+		</div>
+		<div class='section'>
+			<ul>
+				<li class='home_nav_item'>
+					<a href='/'>All Courses<span class='unread'><%= @subject_count %></span></a>
+				</li>
+				<% @subjects.each do |subject, num| %>
+				<li class='home_nav_item'>
+					<a href='#'><%= subject %><span class='unread'><%= num %></span></a>
+				</li>
+				<% end %>
+			</ul>
+			<div class='cb'></div>	
+		</div>
+	</div>
+</div>

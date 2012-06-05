@@ -1,25 +1,30 @@
-<h1>Listing courses</h1>
+<div class="row-fluid">
+	<%=render 'courses/sidebar'%>
+	<div class="span8">
 
-<table>
-  <tr>
-    <th>Provider</th>
-    <th>Title</th>
-    <th>Url</th>
-    <th>Subject</th>
-    <th>Average Rating</th>
-    <th></th>
-    <th></th>
-  </tr>
+		<h2>All Courses</h2>
 
-<% @courses.each do |course| %>
-  <tr>
-    <td><%= course.provider %></td>
-    <td><%= course.title %></td>
-    <td><%= course.url %></td>
-    <td><%= course.subject %></td>
-	<td><%= course.average_rating %></td>
-    <td><%= link_to 'Show', course %></td>
-  </tr>
-<% end %>
-</table>
+		<table>
+  			<tr>
+    			<th>Provider</th>
+    			<th>Title</th>
+    			<th>Url</th>
+    			<th>Subject</th>
+    			<th>Average Rating</th>
+  			</tr>
+
+			<% @courses.each do |course| %>
+  			<tr>
+    			<td><%= course.provider %></td>
+    			<td><%= course.title %></td>
+    			<td><%= course.url %></td>
+    			<td><%= course.subject %></td>
+				<td><%= course.average_rating %></td>
+    			<td><%= link_to 'Show', course %></td>
+  			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+
 
