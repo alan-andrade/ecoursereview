@@ -27,6 +27,7 @@ class Course < ActiveRecord::Base
   validates_uniqueness_of :slug, :scope => :provider
   has_many :professors, through: :relationships
   has_many :relationships, foreign_key: "professor_id", dependent: :destroy
+  has_many :reviews
   
 
       def self.get_udacity_course_info(courses)

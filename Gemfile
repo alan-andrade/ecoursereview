@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 gem 'typhoeus'
 gem 'json'
 gem 'friendly_id', '4.0.1'
+gem 'bcrypt-ruby', '3.0.1'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

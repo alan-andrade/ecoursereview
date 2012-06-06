@@ -12,7 +12,7 @@
 				</li>
 				<% @subjects.each do |subject, num| %>
 				<li class='home_nav_item'>
-					<a href='#'><%= subject %><span class='unread'><%= num %></span></a>
+					<a href=<%= "/#{subject}"%>><%= subject %><span class='unread'><%= num %></span></a>
 				</li>
 				<% end %>
 			</ul>

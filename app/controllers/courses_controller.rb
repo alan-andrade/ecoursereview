@@ -1,6 +1,5 @@
 class CoursesController < ApplicationController
-  # GET /courses
-  # GET /courses.json
+ 
   def index
     @courses = Course.all
 
@@ -17,22 +16,23 @@ class CoursesController < ApplicationController
     
     @subjects = Hash[@subjects.sort] #sort subjects alphabetically
     
-    @subject_count = 0
-    @subjects.each_value do |num|
-       @subject_count += num 
-    end
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @courses }
-    end
+    @subject_count = @courses.count
     
   end
 
-  # GET /courses/1
-  # GET /courses/1.json
+  # GET /:provider/:slug
   def show
     @course = Course.find_by_slug(params[:slug])
   end
 
+  # GET /:subject
+  def subject
+      subject = params[:subject].titleize
+      subject = "Computer Science" if subject = 'Computer'
+      @courses = Course.where(:subject => subject)
+      @subjects = {subject => @courses.count}
+      @subject_count = Course.all.count
+      render "courses/index"
+  end
+  
 end

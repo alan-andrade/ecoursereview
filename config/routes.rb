@@ -1,5 +1,7 @@
 Ecoursereview::Application.routes.draw do
-  resources :courses
   root to: 'courses#index'
+  resource :users
+  resources :courses
   match "/:provider/:slug" => "courses#show"
+  match "/:subject" => "courses#subject"
 end

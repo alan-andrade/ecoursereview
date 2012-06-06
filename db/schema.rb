@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120606180111) do
+ActiveRecord::Schema.define(:version => 20120606203711) do
+
+  create_table "course_reviews", :force => true do |t|
+    t.integer  "course_id"
+    t.integer  "rating"
+    t.text     "text"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "courses", :force => true do |t|
     t.string   "provider"
@@ -50,5 +59,15 @@ ActiveRecord::Schema.define(:version => 20120606180111) do
   add_index "relationships", ["course_id", "professor_id"], :name => "index_relationships_on_course_id_and_professor_id", :unique => true
   add_index "relationships", ["course_id"], :name => "index_relationships_on_course_id"
   add_index "relationships", ["professor_id"], :name => "index_relationships_on_professor_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "password_digest"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end
