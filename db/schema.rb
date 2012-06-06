@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605180916) do
+ActiveRecord::Schema.define(:version => 20120606154803) do
 
   create_table "courses", :force => true do |t|
     t.string   "provider"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20120605180916) do
     t.string   "level"
     t.string   "image_url"
     t.string   "course_code"
+    t.integer  "price"
   end
 
   create_table "professors", :force => true do |t|

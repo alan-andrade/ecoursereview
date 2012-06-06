@@ -15,6 +15,7 @@
 #  level          :string(255)
 #  image_url      :string(255)
 #  course_code    :string(255)
+#  price          :integer
 #
 
 require 'spec_helper'

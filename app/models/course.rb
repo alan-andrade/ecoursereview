@@ -15,10 +15,11 @@
 #  level          :string(255)
 #  image_url      :string(255)
 #  course_code    :string(255)
+#  price          :integer
 #
 
 class Course < ActiveRecord::Base
-  attr_accessible :provider, :subject, :title, :url, :average_rating, :youtube_url, :description, :level, :image_url, :course_code
+  attr_accessible :provider, :subject, :title, :url, :average_rating, :youtube_url, :description, :level, :image_url, :course_code, :price
   validates_uniqueness_of :title, :scope => :provider
   has_many :professors, through: :relationships
   has_many :relationships, foreign_key: "professor_id", dependent: :destroy
@@ -28,7 +29,8 @@ class Course < ActiveRecord::Base
           courses.each do |course|
 
               #add course
-              params = {:provider => 'Udacity'}
+              params = {:provider => 'Udacity',
+                        :price => 0 }
               title = course['title'] 
               name = course['name']
               @full_title = "#{name}: #{title}"
