@@ -32,25 +32,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @course = Course.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @course }
-    end
-    
-    @subjects = Hash.new #{subject => # of courses}
-    @courses.each do |course|
-        
-        subject = course[:subject]
-        if @subjects.has_key?(subject)
-            @subjects[subject] += 1
-        else
-           @subjects[subject] = 1 
-        end
-    end
-    
-    p @subjects
+    p params[:slug]
   end
 
 end

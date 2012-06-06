@@ -16,6 +16,7 @@
 #  image_url      :string(255)
 #  course_code    :string(255)
 #  price          :integer
+#  slug           :string(255)
 #
 
 require 'spec_helper'

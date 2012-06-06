@@ -16,10 +16,13 @@
 #  image_url      :string(255)
 #  course_code    :string(255)
 #  price          :integer
+#  slug           :string(255)
 #
 
 class Course < ActiveRecord::Base
-  attr_accessible :provider, :subject, :title, :url, :average_rating, :youtube_url, :description, :level, :image_url, :course_code, :price
+  extend FriendlyId
+  friendly_id :title, use: :slugged #generates a url based on title
+  attr_accessible :provider, :subject, :title, :url, :average_rating, :youtube_url, :description, :level, :image_url, :course_code, :price, :slug
   validates_uniqueness_of :title, :scope => :provider
   has_many :professors, through: :relationships
   has_many :relationships, foreign_key: "professor_id", dependent: :destroy
