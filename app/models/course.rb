@@ -34,24 +34,24 @@ class Course < ActiveRecord::Base
               title = course['title'] 
               name = course['name']
               @full_title = "#{name}: #{title}"
-              params[:title] = @full_title
-              params[:course_code] = course['course_id']
-              url_path = course['path']
-              params[:url] = "http://www.udacity.com/overview/#{url_path}"
-              youtube_id = course['teaser']['youtube_id']
-              params[:youtube_url] = "http://www.youtube.com/watch?v=#{youtube_id}"
-              params[:subject] = course['tags']['baseSubject']
-              params[:description] = CGI.escape(course['description'])
-              params[:level] = course['tags']['difficulty']
-              params[:image_url] = course['icon_url']
-              p params
-              udacity_course = Course.new(params)
-              udacity_course.save
-              @course_id = udacity_course.id
-              
-              #if course already exists
-              if @course_id == nil
-                  existing_course = Course.find_by_title(@full_title)
+              @course_id = 0
+              existing_course = Course.find_by_title(@full_title)
+              if existing_course == nil
+                  params[:title] = @full_title
+                  params[:course_code] = course['course_id']
+                  url_path = course['path']
+                  params[:url] = "http://www.udacity.com/overview/#{url_path}"
+                  youtube_id = course['teaser']['youtube_id']
+                  params[:youtube_url] = "http://www.youtube.com/watch?v=#{youtube_id}"
+                  params[:subject] = course['tags']['baseSubject']
+                  params[:description] = CGI.escape(course['description'])
+                  params[:level] = course['tags']['difficulty']
+                  params[:image_url] = course['icon_url']
+                  p params
+                  udacity_course = Course.new(params)
+                  udacity_course.save
+                  @course_id = udacity_course.id
+              else
                   @course_id = existing_course.id
               end
 
@@ -59,18 +59,19 @@ class Course < ActiveRecord::Base
               instructors = course['instructors']
               instructors.each do |instructor|
                   params = {}
-                  params[:name] = instructor['name'] 
-                  photo_url = instructor['headshot_url']
-                  params[:image_url] = "http://www.udacity.com#{photo_url}"
-                  params[:bio] = CGI.escape(instructor['bio'])
-                  professor = Professor.new(params)
-                  professor.save
-                  @professor_id = professor.id
-                  
-                  #if professor already exists 
-                  if @professor_id == nil
-                    professor = Professor.find_by_name(instructor['name'])
-                    @professor_id = professor.id 
+                  @name = instructor['name'] 
+                  @professor_id = 0
+                  existing_instructor = Professor.find_by_name(@name)
+                  if existing_instructor == nil
+                      params[:name] = @name
+                      photo_url = instructor['headshot_url']
+                      params[:image_url] = "http://www.udacity.com#{photo_url}"
+                      params[:bio] = CGI.escape(instructor['bio'])
+                      professor = Professor.new(params)
+                      professor.save
+                      @professor_id = professor.id
+                  else
+                    @professor_id = existing_instructor.id 
                   end
                         
                           
