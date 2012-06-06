@@ -4,14 +4,14 @@ class UsersController < ApplicationController
   end
   
   def create
-        @user = User.new(params[:user])
-            if @user.save
-              sign_in @user
-              flash[:success] = "Welcome to EduScore!"
-              redirect_to root_path
-            else
-              render 'new'
-            end
+      @user = User.new(params[:user])
+      if @user.save
+          sign_in @user
+          flash[:success] = "Welcome to EduScore #{@user.name}!"
+          redirect_to root_path
+      else
+          render 'new'
+      end
   end
   
   def show
