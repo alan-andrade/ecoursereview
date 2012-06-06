@@ -25,7 +25,7 @@ class Course < ActiveRecord::Base
   has_many :relationships, foreign_key: "professor_id", dependent: :destroy
   
 
-      def self.get_course_info(courses)
+      def self.get_udacity_course_info(courses)
           courses.each do |course|
 
               #add course
@@ -87,7 +87,7 @@ class Course < ActiveRecord::Base
           response = Typhoeus::Request.get(url)
           all_courses = JSON.parse(response.body)
           courses = all_courses['payload']['courses']
-          Course.get_course_info(courses)
+          Course.get_udacity_course_info(courses)
       end
 
       def self.get_udacity_courses
