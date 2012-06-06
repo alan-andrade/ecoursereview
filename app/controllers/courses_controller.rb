@@ -32,7 +32,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    p params[:slug]
+    @course = Course.find_by_slug(params[:slug])
   end
 
 end

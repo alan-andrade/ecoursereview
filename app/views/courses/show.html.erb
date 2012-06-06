@@ -3,7 +3,9 @@
 <div class="row-fluid">
 
 	<div class="span8">
-		
-	
+		<h2><%= image_tag @course.image_url%><%= @course.title %><h2>
+		<h3>via <%= @course.provider %><h3>
+				
+		<iframe width="560" height="315" src=<%= @course.youtube_url %> frameborder="0" allowfullscreen></iframe>
 	</div>
 </div>
