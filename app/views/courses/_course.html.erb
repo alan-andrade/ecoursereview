@@ -1,10 +1,10 @@
 <div class='course' id='<% course.id %>'>
 	<%= image_tag course.image_url%>
-  	<span class="text"><%= course.title %></span>
+  	<span class="text"><%= course.title%> <%= "(#{course.course_code})" if course.course_code != nil%></span>
 	<%= course.average_rating %>
 	<ul>
-		<li class='home_nav_item'>Subject: <%= course.subject%></li>
-		<li class='home_nav_item'>Source: <%= course.provider%></li>
+		<li class='home_nav_item'>Subject: <%= course.subject %></li>
+		<li class='home_nav_item'>Source: <%= course.provider %></li>
 		<li class='home_nav_item'>Description: <%= CGI.unescape(course.description) %></li>
 	</ul>
 </div>
