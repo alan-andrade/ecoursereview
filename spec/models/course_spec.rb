@@ -9,7 +9,7 @@
 #  subject        :string(255)
 #  created_at     :datetime        not null
 #  updated_at     :datetime        not null
-#  average_rating :integer
+#  average_rating :float
 #  youtube_url    :string(255)
 #  description    :text
 #  level          :string(255)

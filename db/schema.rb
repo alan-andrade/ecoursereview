@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120606225012) do
+ActiveRecord::Schema.define(:version => 20120607180905) do
 
   create_table "course_reviews", :force => true do |t|
     t.integer  "course_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20120606225012) do
     t.string   "subject"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.integer  "average_rating"
+    t.float    "average_rating"
     t.string   "youtube_url"
     t.text     "description"
     t.string   "level"
