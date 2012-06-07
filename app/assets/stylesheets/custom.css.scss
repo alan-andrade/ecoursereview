@@ -444,3 +444,11 @@ input, textarea, select, .uneditable-input {
 .page {
 	float:right;
 }
+
+/* star ratings */
+
+.star {
+	float:right;
+}
+
+@import 'jquery-star-rating'

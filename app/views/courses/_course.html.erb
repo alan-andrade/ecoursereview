@@ -6,6 +6,45 @@
 		<div class = 'span8'>
   			<h4><a href=<%= "#{course.provider}/#{course.slug}" %>><span class="text"><%= course.title%> <%= "(#{course.course_code})" if course.course_code != nil%></span></a></h4>
 			<br></br>
+			<div class='star'>
+				<% if course.average_rating == nil or course.average_rating == 0 %>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+				<% elsif course.average_rating == 1 %>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled" checked="checked"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+				<% elsif course.average_rating == 2 %>	
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled" checked="checked"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+				<% elsif course.average_rating == 3 %>	
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled" checked="checked"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>	
+				<% elsif course.average_rating == 4 %>	
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled" checked="checked"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+				<% elsif course.average_rating == 5 %>	
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled"/>
+					<input name="star3[<%= course.id %>]" type="radio" class="star" disabled="disabled" checked="checked"/>			
+				<% end %>
+			</div>
 			<ul>
 				<li class='course'><strong>Subject:</strong> <%= course.subject %></li>
 				<li class='course'><strong>Source:</strong> <%= course.provider %></li>
