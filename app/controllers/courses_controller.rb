@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
  
   def index
         
-    @courses = Course.order('title').page(params[:page]).per(5) 
+    @courses = Course.order('title').page(params[:page]).per(10) 
     all_courses = Course.all
     @subjects = Hash.new #{subject => # of courses}
     all_courses.each do |course|
@@ -30,7 +30,7 @@ class CoursesController < ApplicationController
   def subject
       subject = params[:subject].titleize
       subject = "Computer Science" if subject == 'Computer'
-      @courses = Course.where(:subject => subject).order('title').page(params[:page]).per(5)
+      @courses = Course.where(:subject => subject).order('title').page(params[:page]).per(10)
       @subjects = {subject => @courses.count}
       @subject_count = Course.all.count
       render "courses/index"
