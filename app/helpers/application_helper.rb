@@ -23,4 +23,16 @@ module ApplicationHelper
         name = ( split == 1  ) ? "star3[#{course_id}]" : "adv1[#{course_id}]"
         radio_button_tag( name , nil , checked , options )
     end
+    
+    #get the user for each review
+    def get_user(users, user_id)
+       user_who_wrote_review = Hash.new
+       users.each do |user|
+          if user.id == user_id
+              user_who_wrote_review = user
+              break
+          end
+       end
+       return user_who_wrote_review
+    end
 end

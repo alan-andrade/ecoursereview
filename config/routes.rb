@@ -1,6 +1,10 @@
 Ecoursereview::Application.routes.draw do
   resource :users
-  resources :courses
+  resources :courses do
+     resources :course_reviews do
+         resources :users
+    end 
+  end
   resources :sessions, only: [:new, :create, :destroy]
   root to: 'courses#index'
   match '/signup', to: 'users#new'

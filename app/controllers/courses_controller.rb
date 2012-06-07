@@ -24,6 +24,14 @@ class CoursesController < ApplicationController
   # GET /:provider/:slug
   def show
     @course = Course.find_by_slug(params[:slug])
+    @course_reviews = CourseReview.where(:course_id => @course.id)
+    
+    #get user ids for all reviews
+    user_ids = []
+    @course_reviews.each do |course_review|
+        user_ids << course_review.user_id unless user_ids.include?(course_review.user_id)
+    end
+    @users = User.where(:id => user_ids)
   end
 
   # GET /:subject

@@ -1,0 +1,12 @@
+<div class='course_review' id='<% course_review.id %>'>	
+			
+	<div><% user = get_user(@users, course_review.user_id) %></div>
+	<%= user.name %>
+	<%= gravatar_for user %>
+	<%= course_review.text %>
+	<div class='star'>
+		<% (1..5 ).each do |num| %>
+			<%= star_button( course_review.id , course_review.rating , num , 1 , true )  %>
+		<% end %>
+	</div>
+</div>	
