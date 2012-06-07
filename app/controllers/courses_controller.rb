@@ -30,7 +30,7 @@ class CoursesController < ApplicationController
   def subject
       subject = params[:subject].titleize
       subject = "Computer Science" if subject == 'Computer'
-      @courses = Course.where(:subject => subject)
+      @courses = Course.where(:subject => subject).order('title').page(params[:page]).per(5)
       @subjects = {subject => @courses.count}
       @subject_count = Course.all.count
       render "courses/index"
