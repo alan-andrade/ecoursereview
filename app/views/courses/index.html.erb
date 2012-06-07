@@ -1,12 +1,12 @@
 <div class="row-fluid">
 	<%=render 'courses/sidebar'%>
-	<div class="span8">
-		
+	<div class="span8">		
 		<ul>
 			<div class='course'>
 				<%= render @courses %>
 			</div>
 		</ul>	
+		<span class="page"><%= paginate @courses %></span>
 	</div>
 </div>
 

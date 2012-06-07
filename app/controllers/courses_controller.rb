@@ -1,10 +1,11 @@
 class CoursesController < ApplicationController
  
   def index
-    @courses = Course.all
-
+        
+    @courses = Course.order('title').page(params[:page]).per(5) 
+    all_courses = Course.all
     @subjects = Hash.new #{subject => # of courses}
-    @courses.each do |course|
+    all_courses.each do |course|
         
         subject = course[:subject]
         if @subjects.has_key?(subject)
@@ -16,7 +17,7 @@ class CoursesController < ApplicationController
     
     @subjects = Hash[@subjects.sort] #sort subjects alphabetically
     
-    @subject_count = @courses.count
+    @subject_count = all_courses.count
     
   end
 
