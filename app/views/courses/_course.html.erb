@@ -1,10 +1,17 @@
 <div class='course' id='<% course.id %>'>
-	<%= image_tag course.image_url%>
-  	<a href=<%= "#{course.provider}/#{course.slug}" %>><span class="text"><%= course.title%> <%= "(#{course.course_code})" if course.course_code != nil%></span></a>
-	<%= course.average_rating %>
-	<ul>
-		<li class='home_nav_item'>Subject: <%= course.subject %></li>
-		<li class='home_nav_item'>Source: <%= course.provider %></li>
-		<li class='home_nav_item'>Description: <%= CGI.unescape(course.description) %></li>
-	</ul>
+	<div class="row">
+		<div class='span1'>
+			<span class='course'><%= image_tag course.image_url%></span>
+		</div>
+		<div class = 'span8'>
+  			<h4><a href=<%= "#{course.provider}/#{course.slug}" %>><span class="text"><%= course.title%> <%= "(#{course.course_code})" if course.course_code != nil%></span></a></h4>
+			<br></br>
+			<ul>
+				<li class='course'><strong>Subject:</strong> <%= course.subject %></li>
+				<li class='course'><strong>Source:</strong> <%= course.provider %></li>
+				<p><li class='course'><strong>Description:</strong> <%= CGI.unescape(course.description) %></li></p>
+			</ul>
+		</div>
+	</div>
+	<hr>
 </div>

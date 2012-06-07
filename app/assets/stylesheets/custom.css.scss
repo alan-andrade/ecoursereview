@@ -338,13 +338,13 @@ text-shadow:none;
 text-decoration:none;
 }
 
-.sidebar-module .section ul:not(.my_startups) li.home_nav_item.separator,.sidebar-module .section ul:not(.my_startups) li.home_nav_item.nav-separator {
+.sidebar-module .section ul li.home_nav_item.separator,.sidebar-module .section ul li.home_nav_item.nav-separator {
 border-bottom:1px solid #fff;
 border-top:1px solid #e7e9eb;
 margin:5px 0 3px;
 }
 
-.sidebar-module .section ul:not(.my_startups) li.home_nav_item.heading {
+.sidebar-module .section ul li.home_nav_item.heading {
 font-weight:700;
 text-transform:uppercase;
 font-size:.77em;
@@ -353,12 +353,12 @@ margin:5px 0;
 padding:0 9px;
 }
 
-.sidebar-module .section ul:not(.my_startups) li.home_nav_item.heading:hover {
+.sidebar-module .section ul li.home_nav_item.heading:hover {
 background:none;
 color:#aaa;
 }
 
-.sidebar-module .section ul:not(.my_startups) li.home_nav_item:not(.selected):hover {
+.sidebar-module .section ul li.home_nav_item:not(.selected):hover {
 background-color:#fff;
 background-image:none;
 -moz-border-radius:3px;
@@ -369,7 +369,7 @@ background-image:none;
 border-radius:3px;
 }
 
-.sidebar-module .section ul:not(.my_startups) li.home_nav_item a {
+.sidebar-module .section ul li.home_nav_item a {
 -moz-box-sizing:border-box;
 -webkit-box-sizing:border-box;
 -ms-box-sizing:border-box;
@@ -380,22 +380,22 @@ color:#333;
 padding:5px 8px;
 }
 
-.sidebar-module .section ul:not(.my_startups) li.home_nav_item a strong {
+.sidebar-module .section ul li.home_nav_item a strong {
 width:85%;
 }
 
-.sidebar-module .section ul:not(.my_startups) li.home_nav_item a img.load,.sidebar-module .section ul:not(.my_startups) li.home_nav_item a span.unread {
+.sidebar-module .section ul li.home_nav_item a img.load,.sidebar-module .section ul li.home_nav_item a span.unread {
 float:right;
 vertical-align:middle;
 margin-top:auto;
 }
 
-.sidebar-module .section ul:not(.my_startups) li.home_nav_item a span.unread {
+.sidebar-module .section ul li.home_nav_item a span.unread {
 min-height:19px;
 margin-right:-3px;
 }
 
-.sidebar-module .section ul:not(.my_startups) li.home_nav_item:hover>a,.sidebar-module .section ul:not(.my_startups) li.home_nav_item a:hover {
+.sidebar-module .section ul li.home_nav_item:hover>a,.sidebar-module .section ul li.home_nav_item a:hover {
 text-decoration:none;
 }
 
@@ -431,3 +431,12 @@ input, textarea, select, .uneditable-input {
   @extend .control-group;
   @extend .error;
  }
+
+/* course list */
+.course ul, li {
+	list-style-type: none;
+}
+
+.course img {
+	vertical-align: text-top;
+}
