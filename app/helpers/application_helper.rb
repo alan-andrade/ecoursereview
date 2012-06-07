@@ -11,11 +11,12 @@ module ApplicationHelper
     
     #star button functions
     def star_rating_from_rating( rating , split )
-        (rating * split).round / split
+        (rating * split.to_f).round / split.to_f
     end 
     
     def star_button( course_id , rating , button_num , split , disabled )
         rating = 0 if rating.nil?
+        p star_rating_from_rating(rating , split)
         checked = ( button_num == star_rating_from_rating( rating , split ) * split )
         options = { :class => "star {split:#{split}}" }
         options[:disabled] = 'disabled' if disabled
