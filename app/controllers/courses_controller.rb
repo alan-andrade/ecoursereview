@@ -26,12 +26,20 @@ class CoursesController < ApplicationController
     @course = Course.find_by_slug(params[:slug])
     @course_reviews = CourseReview.where(:course_id => @course.id)
     
-    #get user ids for all reviews
+    #get users associated with all reviews
     user_ids = []
     @course_reviews.each do |course_review|
         user_ids << course_review.user_id unless user_ids.include?(course_review.user_id)
     end
     @users = User.where(:id => user_ids)
+    
+    #get professors associated with each course
+    professor_relationships = Relationship.where(:course_id => @course.id)
+    professor_ids = []
+    professor_relationships.each do |relationship|
+       professor_ids << relationship.professor_id unless professor_ids.include?(relationship.professor_id) 
+    end
+    @professors = Professor.where(:id => professor_ids)
   end
 
   # GET /:subject
