@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
   # GET /:subject
   def subject
       subject = params[:subject].titleize
-      subject = "Computer Science" if subject = 'Computer'
+      subject = "Computer Science" if subject == 'Computer'
       @courses = Course.where(:subject => subject)
       @subjects = {subject => @courses.count}
       @subject_count = Course.all.count
