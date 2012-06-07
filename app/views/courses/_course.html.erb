@@ -4,7 +4,7 @@
 			<span class='course'><%= image_tag course.image_url%></span>
 		</div>
 		<div class = 'span8'>
-  			<h4><a href=<%= "#{course.provider}/#{course.slug}" %>><span class="text"><%= course.title%> <%= "(#{course.course_code})" if course.course_code != nil%></span></a></h4>
+  			<h4><a href=<%= "/#{course.provider}/#{course.slug}" %>><span class="text"><%= course.title%> <%= "(#{course.course_code})" if course.course_code != nil%></span></a></h4>
 			<br></br>
 			<div class='star'>
 				<% (1..20 ).each do |num| %>
@@ -12,8 +12,8 @@
 				<% end %>
 			</div>
 			<ul>
-				<li class='course'><strong>Subject:</strong> <%= course.subject %></li>
-				<li class='course'><strong>Source:</strong> <%= course.provider %></li>
+				<li class='course'><strong>Subject:</strong> <%= link_to course.subject, "/subject/#{course.subject}" %></li>
+				<li class='course'><strong>Source:</strong> <%= link_to course.provider, "/provider/#{course.provider}" %></li>
 			</ul>
 		</div>
 	</div>
