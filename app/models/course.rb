@@ -17,12 +17,13 @@
 #  course_code    :string(255)
 #  price          :integer
 #  slug           :string(255)
+#  short_url      :string(255)
 #
 
 class Course < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged #generates a url based on title
-  attr_accessible :provider, :subject, :title, :url, :average_rating, :youtube_url, :description, :level, :image_url, :course_code, :price, :slug
+  attr_accessible :provider, :subject, :title, :url, :average_rating, :youtube_url, :description, :level, :image_url, :course_code, :price, :slug, :short_url
   validates_uniqueness_of :title, :scope => :provider
   validates_uniqueness_of :slug, :scope => :provider
   has_many :professors, through: :relationships
@@ -105,5 +106,15 @@ class Course < ActiveRecord::Base
              Course.parse_udacity(udacity_url)     
           end 
       end
-  
+      
+      def self.shorten_course_urls
+          Bitly.use_api_version_3
+          bitly = Bitly.new('o_2uqtola3r1', 'R_9a615008facca90971dde16cc3b734f5')
+          courses = Course.where(:short_url => nil)
+          courses.each do |course|
+              course.short_url = bitly.shorten(course.url).short_url
+              course.save
+              p course.short_url
+          end 
+      end
 end

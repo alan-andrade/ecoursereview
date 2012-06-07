@@ -1,0 +1,21 @@
+<div class="span3 sidebar">
+	<div class='sidebar-module'>
+		<div class='section header'>
+				<b>Course Details</b>
+		</div>
+		<div class='section'>
+			<ul>
+				<% if @course.price == 0 %>
+					<li><strong>Price:</strong> FREE</li>
+				<% else %>	
+					<li><strong>Price:</strong> $<%= @course.price %></li>
+				<% end %>
+				<li><strong>Subject:</strong> <%= @course.subject%></li>
+				<li><strong>Level:</strong> <%= @course.level%></li>
+				<li><strong>Provider:</strong> <%= @course.provider%></li>
+				<li><strong>Code:</strong> <%= @course.course_code%></li>
+				<li><strong>URL:</strong> <%= @course.url %></li>
+			</ul>		
+		</div>
+	</div>
+</div>

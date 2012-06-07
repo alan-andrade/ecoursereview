@@ -1,0 +1,15 @@
+<h2><%= image_tag @course.image_url%><%= @course.title %></h2>
+<h3>via <%= @course.provider %></h3>	
+<div class='star'>
+	<% (1..20 ).each do |num| %>
+		<%= star_button( @course.id , @course.average_rating , num , 4 , true )  %>
+	<% end %>
+</div>	
+<iframe width="560" height="315" src=<%= @course.youtube_url %> frameborder="0" allowfullscreen></iframe>
+<br></br>
+<% @professors.each do |professor| %>
+	<%= professor.name %>
+	<%= image_tag professor.image_url %>
+<% end %>
+<br></br>
+<%= render @course_reviews %>
