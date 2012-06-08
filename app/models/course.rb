@@ -109,7 +109,7 @@ class Course < ActiveRecord::Base
       
       def self.shorten_course_urls
           Bitly.use_api_version_3
-          bitly = Bitly.new('o_2uqtola3r1', 'R_9a615008facca90971dde16cc3b734f5')
+          bitly = Bitly.new(ENV['BITLY_USERNAME'], ENV['BITLY_APIKEY'])
           courses = Course.where(:short_url => nil)
           courses.each do |course|
               course.short_url = bitly.shorten(course.url).short_url

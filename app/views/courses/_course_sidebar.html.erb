@@ -18,9 +18,9 @@
 				<% else %>	
 					<li><strong>Price:</strong> $<%= @course.price %></li>
 				<% end %>
-				<li><strong>Subject:</strong> <span class="star"><%= @course.subject%></span></li>
+				<li><strong>Subject:</strong> <span class="star"><%= link_to @course.subject, "/subject/#{@course.subject}"%></span></li>
 				<li><strong>Level:</strong> <span class="star"><%= @course.level%></span></li>
-				<li><strong>Provider:</strong> <span class="star"><%= @course.provider%></span></li>
+				<li><strong>Provider:</strong> <span class="star"><%= link_to @course.provider, "/provider/#{@course.provider}"%></span></li>
 				<li><strong>Code:</strong> <span class="star"><%= @course.course_code%></span></li>
 				<% if @professors.count == 1 %>
 					<li><strong>Instructor:</strong> <span class="star"><%= @professors[0].name %></span></li>
