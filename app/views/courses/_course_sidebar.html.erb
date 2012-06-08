@@ -22,6 +22,13 @@
 				<li><strong>Level:</strong> <span class="star"><%= @course.level%></span></li>
 				<li><strong>Provider:</strong> <span class="star"><%= @course.provider%></span></li>
 				<li><strong>Code:</strong> <span class="star"><%= @course.course_code%></span></li>
+				<% if @professors.count == 1 %>
+					<li><strong>Instructor:</strong> <span class="star"><%= @professors[0].name %></span></li>
+				<% else %>	
+					<% @professors.each do |professor| %>
+						<li><strong>Instructor:</strong> <span class="star"><%= professor.name %></span></li>
+					<% end %>
+				<% end %>
 				<li><strong>URL:</strong> <span class="star"><%= link_to @course.short_url, @course.short_url, :target => '_blank' %></span></li>
 			</ul>		
 		</div>

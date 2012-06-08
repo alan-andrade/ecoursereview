@@ -1,11 +1,14 @@
-<h2><%= image_tag @course.image_url%><%= @course.title %></h2>
-<h3>via <%= @course.provider %></h3>	
+<h2><%= @course.title %></h2>	
 
-<iframe width="560" height="315" src=<%= @course.youtube_url %> frameborder="0" allowfullscreen></iframe>
+<div class='video'>
+	<iframe width="560" height="315" src=<%= @course.youtube_url %> frameborder="0" allowfullscreen></iframe>
+</div>
 <br></br>
-<% @professors.each do |professor| %>
-	<%= professor.name %>
-	<%= image_tag professor.image_url %>
-<% end %>
+<div class='span1'>
+	<span class='course'><%= image_tag @course.image_url%></span>
+</div>
+<div class='span8'>
+	<strong>Description:</strong> <%= CGI.unescape(@course.description) %>
+</div>
 <br></br>
-<%= render @course_reviews %>
+<br></br>
