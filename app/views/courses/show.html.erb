@@ -1,4 +1,6 @@
 <% provide(:title, "#{@course.provider} #{@course.course_code} - #{@course.title}")%>
+<% @user ||= current_user %>
+
 <p id="notice"><%= notice %></p>
 
 	
@@ -6,6 +8,17 @@
 	<%=render 'courses/course_sidebar'%>
 	<div class="span8">
 		<%= render 'courses/course_page'%>
+		<br></br>
+		<% if @user != nil %>
+			<a class="btn btn-primary" href="/course_reviews/new">Write a Review</a>
+		<% else %>
+			<a class="btn btn-primary" href="/signin">Sign In and Write a Review</a>
+		<% end %>	
+		<% if @course_reviews.count == 1 %>
+			<h3><%= @course_reviews.count%> Review</h3>
+		<% else %>
+			<h3><%= @course_reviews.count%> Reviews</h3>
+		<% end %>	
 		<%= render @course_reviews %>
 	</div>
 </div>
