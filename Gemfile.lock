@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/anton-zaytsev/acts_as_rateable.git
+  revision: 01066eceb2d16e35be437b7392cc3375f1f377f7
+  specs:
+    acts_as_rateable (3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -168,6 +174,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_rateable!
   annotate (~> 2.4.1.beta)
   bcrypt-ruby (= 3.0.1)
   bitly

@@ -24,6 +24,10 @@ module ApplicationHelper
         radio_button_tag( name , nil , checked , options )
     end
     
+    def star_button_rate(f, course, value, checked)
+        radio_button_tag("rating[#{course.id}]", value, checked, :class => 'star')
+    end
+    
     #get the user for each review
     def get_user(users, user_id)
        user_who_wrote_review = Hash.new

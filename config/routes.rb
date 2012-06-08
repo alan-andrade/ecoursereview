@@ -11,7 +11,7 @@ Ecoursereview::Application.routes.draw do
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
-  match '/course-reviews/new', to: 'course_reviews#create'
+  match '/review/new/:slug', to: 'course_reviews#new'
   match "/subject/:subject" => "courses#subject"
   match "/provider/:provider" => "courses#provider"
   match "/:provider/:slug" => "courses#show"

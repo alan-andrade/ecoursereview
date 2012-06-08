@@ -1,10 +1,27 @@
 <%= provide(:title, 'Write a Review') %>
 <% @user ||= current_user %>
 
-<h1>Write A Review</h1>
-<%= @user.name%>
+<h2><%= @course.title %></h2>
 <div class="row">
   <div class="span6 offset3">
-    
+	
+	<br></br>
+	
+	
+	<%= form_for(@course_review) do |f| %>
+	  <%= render 'shared/error_messages' %> 	
+			
+	  	<% 1.upto(5) do |value| %>
+			<%= star_button_rate(f, @course, value, (value==0)) %>	
+	  	<% end %>
+	  <%= hidden_field_tag("course_id", @course.id) %>		
+	  
+	  <br></br>	
+	
+      <%= f.label 'Your Review' %>
+      <%= f.text_area :text, :size => "24x6" %>
+
+      <%= f.submit "Post my review", class: "btn btn-large btn-primary" %>
+    <% end %>
   </div>
 </div>

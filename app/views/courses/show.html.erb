@@ -10,7 +10,7 @@
 		<%= render 'courses/course_page'%>
 		<br></br>
 		<% if @user != nil %>
-			<a class="btn btn-primary" href="/course_reviews/new">Write a Review</a>
+			<a class="btn btn-primary" href="/review/new/<%= params[:slug] %>">Write a Review</a>
 		<% else %>
 			<a class="btn btn-primary" href="/signin">Sign In and Write a Review</a>
 		<% end %>	

@@ -7,6 +7,7 @@ gem 'friendly_id', '4.0.1'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'kaminari'
 gem 'bitly'
+gem "acts_as_rateable", :git => "git://github.com/anton-zaytsev/acts_as_rateable.git"
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

@@ -15,5 +15,7 @@ class CourseReview < ActiveRecord::Base
   attr_accessible :course_id, :rating, :text, :user_id
   belongs_to :course
   belongs_to :user
-  validates :text, uniqueness: true
+  validates :text, uniqueness: true, presence: true
+  validates :rating, presence: true
+  acts_as_rateable
 end

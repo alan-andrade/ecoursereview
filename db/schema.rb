@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120607222117) do
+ActiveRecord::Schema.define(:version => 20120608163907) do
 
   create_table "course_reviews", :force => true do |t|
     t.integer  "course_id"
@@ -49,6 +49,24 @@ ActiveRecord::Schema.define(:version => 20120607222117) do
     t.string   "image_url"
     t.text     "bio"
   end
+
+  create_table "rates", :force => true do |t|
+    t.integer "score"
+  end
+
+  create_table "ratings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "rate_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type", :limit => 32
+    t.text     "free_text"
+    t.string   "rater_name"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "ratings", ["rate_id"], :name => "index_ratings_on_rate_id"
+  add_index "ratings", ["rateable_id", "rateable_type"], :name => "index_ratings_on_rateable_id_and_rateable_type"
 
   create_table "relationships", :force => true do |t|
     t.integer  "course_id"
