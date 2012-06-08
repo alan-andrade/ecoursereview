@@ -5,16 +5,24 @@
 		</div>
 		<div class='section'>
 			<ul>
+				<li>
+					<strong>Score:</strong>
+					<div class="star">
+					<% (1..20 ).each do |num| %>
+						<%= star_button( @course.id , @course.average_rating , num , 4 , true )  %>
+					<% end %>
+					</div>
+				</li>	
 				<% if @course.price == 0 %>
-					<li><strong>Price:</strong> FREE</li>
+					<li><strong>Price:</strong> <span class="star">FREE</span></li>
 				<% else %>	
 					<li><strong>Price:</strong> $<%= @course.price %></li>
 				<% end %>
-				<li><strong>Subject:</strong> <%= @course.subject%></li>
-				<li><strong>Level:</strong> <%= @course.level%></li>
-				<li><strong>Provider:</strong> <%= @course.provider%></li>
-				<li><strong>Code:</strong> <%= @course.course_code%></li>
-				<li><strong>URL:</strong> <%= @course.url %></li>
+				<li><strong>Subject:</strong> <span class="star"><%= @course.subject%></span></li>
+				<li><strong>Level:</strong> <span class="star"><%= @course.level%></span></li>
+				<li><strong>Provider:</strong> <span class="star"><%= @course.provider%></span></li>
+				<li><strong>Code:</strong> <span class="star"><%= @course.course_code%></span></li>
+				<li><strong>URL:</strong> <span class="star"><%= link_to @course.short_url, @course.short_url, :target => '_blank' %></span></li>
 			</ul>		
 		</div>
 	</div>
