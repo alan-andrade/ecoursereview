@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120608163907) do
+ActiveRecord::Schema.define(:version => 20120609145309) do
 
   create_table "course_reviews", :force => true do |t|
     t.integer  "course_id"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(:version => 20120608163907) do
     t.string   "subject"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.float    "average_rating"
     t.string   "youtube_url"
     t.text     "description"
     t.string   "level"
@@ -38,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20120608163907) do
     t.integer  "price"
     t.string   "slug"
     t.string   "short_url"
+    t.float    "average_rating"
   end
 
   add_index "courses", ["slug"], :name => "index_courses_on_slug", :unique => true

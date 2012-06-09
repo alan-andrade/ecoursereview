@@ -29,7 +29,6 @@ class Course < ActiveRecord::Base
   has_many :professors, through: :relationships
   has_many :relationships, foreign_key: "professor_id", dependent: :destroy
   has_many :reviews
-  acts_as_rateable
   
 
       def self.get_udacity_course_info(courses)

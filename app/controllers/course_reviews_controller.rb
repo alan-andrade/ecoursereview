@@ -14,8 +14,15 @@ class CourseReviewsController < ApplicationController
                   :text => text["text"],
                   :rating => rating[course_id]
        }
-       course = CourseReview.new(params)
-       course.save
+       course_review = CourseReview.new(params)
+       course_review.save
+       
+       average_rating = CourseReview.where(:course_id => course_id).average(:rating).to_f
+       p course = Course.find_by_id(course_id)
+       course.average_rating = average_rating
+       p course.save
+       
+       
        redirect_to root_path
        flash[:success] = "Your review has been saved!"
        
