@@ -1,7 +1,7 @@
 <div class='course_review' id='<% course_review.id %>'>	
 	<hr>		
 	<div><% user = get_user(@users, course_review.user_id) %></div>
-	<strong><%= user.name %></strong>
+	<strong><%= user.name %></strong> <i><%= course_review.created_at.strftime("%m/%d/%Y") %></i>
 	<%= gravatar_for user %>
 	<div class='star'>
 		<% (1..5 ).each do |num| %>

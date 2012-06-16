@@ -36,7 +36,8 @@ class Course < ActiveRecord::Base
 
               #add course
               params = {:provider => 'Udacity',
-                        :price => 0 }
+                        :price => 0,
+                        :average_rating => 0 }
               title = course['title'] 
               name = course['name']
               @full_title = "#{name}: #{title}"
